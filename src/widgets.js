@@ -21,8 +21,11 @@ var Widgets = {
     },
 
     registerMany: function(widgets) {
-        widgets.forEach(([widget, editor]) => {
-            widget && this.register(widget.name, widget, editor);
+        widgets.forEach((obj) => {
+            if (obj && obj.length) {
+                var [widget, editor] = obj;
+                widget && this.register(widget.name, widget, editor);
+            }
         });
 
         this.validateAlignments();
